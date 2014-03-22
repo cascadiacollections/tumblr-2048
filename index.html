@@ -10,7 +10,7 @@
       "888"  `V88V"V8P' o888o o888o o888o `Y8bod8P' o888o d888b   Y8P
 
 -->
-<html>
+<html class="progrecss mock fixed staggered white" data-progrecss="50">
 <head>
   <meta charset="utf-8">
   <title>2048</title>
@@ -24,18 +24,19 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 
+    <link href="style/progrecss.css" rel="stylesheet" type="text/css">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
   <div class="container">
+
     <div class="heading">
       <h1 class="title">Tumblr 2048</h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
+        <div style="display: none" class="scores-container">
+            <div class="score-container"></div>
+            <div class="best-container"></div>
+        </div>
     </div>
-    <p class="game-intro">Match all <strong>11</strong> photos to win!</p>
 
     <div class="game-container">
       <div class="game-message">
@@ -77,19 +78,6 @@
 
       </div>
     </div>
-
-    <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-    </p>
-    <hr>
-    <p>
-    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
-    </p>
-    <hr>
-    <p>
-    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
-    </p>
-  </div>
 
   <script src="js/animframe_polyfill.js"></script>
   <script src="js/keyboard_input_manager.js"></script>
