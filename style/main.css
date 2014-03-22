@@ -2,7 +2,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #2C4762;
+  background: #2c4762 url('https://www.tumblr.com/images/background.png?de266503a28e22aff41c30146ca83c24') top repeat-x;
   color: #E7E7E7;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; }
@@ -179,7 +179,7 @@ hr {
       margin-top: 59px; }
     .game-container .game-message a {
       display: inline-block;
-      background: #8f7a66;
+      background: #2C4762;
       border-radius: 3px;
       padding: 0 20px;
       text-decoration: none;
@@ -492,7 +492,6 @@ hr {
     margin: 20px 0;
     padding: 0 20px;
     height: 100%;
-    background: #2c4762 url('https://www.tumblr.com/images/background.png?de266503a28e22aff41c30146ca83c24') top repeat-x;
     color: #444;
   }
 
@@ -520,7 +519,6 @@ hr {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    background: #bbada0;
     border-radius: 6px;
     width: 280px;
     height: 280px;
@@ -555,7 +553,7 @@ hr {
         margin-top: 59px; }
       .game-container .game-message a {
         display: inline-block;
-        background: #8f7a66;
+        background: #2C4762;
         border-radius: 3px;
         padding: 0 20px;
         text-decoration: none;
