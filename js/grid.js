@@ -69,8 +69,14 @@ Grid.prototype.cellContent = function (cell) {
   }
 };
 
+// TODO: Kevin
+Grid.prototype.setHighestTile = function (tile) {
+    if (tile.value > highestTileIndex) highestTileIndex = tile.value; console.log("new highest: " + highestTileIndex);
+};
+
 // Inserts a tile at its position
 Grid.prototype.insertTile = function (tile) {
+  this.setHighestTile(tile);
   this.cells[tile.x][tile.y] = tile;
 };
 
@@ -82,3 +88,5 @@ Grid.prototype.withinBounds = function (position) {
   return position.x >= 0 && position.x < this.size &&
          position.y >= 0 && position.y < this.size;
 };
+
+var highestTileIndex = 0;

@@ -64,7 +64,6 @@ HTMLActuator.prototype.addTile = function (tile) {
   inner.classList.add("tile-inner");
   inner.textContent = tile.value;
 
-  console.log("ADDING: " + tile.value);
   // TODO: Kevin added
   inner.innerHTML = '<img height="107px" width="107px" src="' + tumbles[tile.value].url + '" />';
 
@@ -115,6 +114,9 @@ HTMLActuator.prototype.updateScore = function (score) {
 
   this.scoreContainer.textContent = this.score;
 
+  // TODO: added by kevin
+  this.scoreContainer.innerHTML = '<img height="107px" width="107px" src="' + tumbles[highestTileIndex].url + '" />';
+
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
@@ -126,6 +128,9 @@ HTMLActuator.prototype.updateScore = function (score) {
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
+
+  // TODO: added by kevin
+  this.bestContainer.innerHTML = '<img height="107px" width="107px" src="' + tumbles[bestScore].url + '" />';
 };
 
 HTMLActuator.prototype.message = function (won) {

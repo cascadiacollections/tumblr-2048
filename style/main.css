@@ -2,8 +2,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #faf8ef;
-  color: #776e65;
+  background: #2C4762;
+  color: #E7E7E7;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px; }
 
@@ -56,7 +56,7 @@ h1.title {
 .score-container, .best-container {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #456179;
   padding: 15px 25px;
   font-size: 25px;
   height: 25px;
@@ -104,7 +104,7 @@ p {
   line-height: 1.65; }
 
 a {
-  color: #776e65;
+  color: #E7E7E7;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer; }
@@ -151,7 +151,7 @@ hr {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  background: #bbada0;
+  background: #456179;
   border-radius: 6px;
   width: 500px;
   height: 500px;
@@ -497,7 +497,11 @@ hr {
 
   body {
     margin: 20px 0;
-    padding: 0 20px; }
+    padding: 0 20px;
+    height: 100%;
+    background: #2c4762 url('https://www.tumblr.com/images/background.png?de266503a28e22aff41c30146ca83c24') top repeat-x;
+    color: #444;
+  }
 
   h1.title {
     font-size: 27px;
