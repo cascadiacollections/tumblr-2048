@@ -23,6 +23,7 @@ window.requestAnimationFrame(function() {
         $.each(data.response.posts, function(key, value) {
             var index = Math.pow(2, key + 1);
             tumbles[index] = {
+                id : key,
                 url: value.photos[0].original_size.url
             };
         });

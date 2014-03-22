@@ -65,7 +65,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   inner.textContent = tile.value;
 
   // TODO: Kevin added
-  inner.innerHTML = '<img height="107px" width="107px" src="' + tumbles[tile.value].url + '" />';
+  inner.innerHTML = '<img src="' + tumbles[tile.value].url + '" />';
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
@@ -107,30 +107,28 @@ HTMLActuator.prototype.positionClass = function (position) {
 };
 
 HTMLActuator.prototype.updateScore = function (score) {
-  this.clearContainer(this.scoreContainer);
+  //this.clearContainer(this.scoreContainer);
 
   var difference = score - this.score;
   this.score = score;
 
-  this.scoreContainer.textContent = this.score;
-
-  // TODO: added by kevin
-  this.scoreContainer.innerHTML = '<img height="107px" width="107px" src="' + tumbles[highestTileIndex].url + '" />';
+  //this.scoreContainer.textContent = this.score;
 
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
     addition.textContent = "+" + difference;
 
-    this.scoreContainer.appendChild(addition);
+    //this.scoreContainer.appendChild(addition);
   }
+
+    var percentage = Math.round(((tumbles[highestTileIndex].id / 11) * 100));
+  $('html').attr("data-progrecss", percentage);
+  console.log(tumbles[highestTileIndex].id);
 };
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
-  this.bestContainer.textContent = bestScore;
-
-  // TODO: added by kevin
-  this.bestContainer.innerHTML = '<img height="107px" width="107px" src="' + tumbles[bestScore].url + '" />';
+  //this.bestContainer.textContent = bestScore;
 };
 
 HTMLActuator.prototype.message = function (won) {

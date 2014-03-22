@@ -10,7 +10,7 @@
       "888"  `V88V"V8P' o888o o888o o888o `Y8bod8P' o888o d888b   Y8P
 
 -->
-<html class="progrecss mock fixed staggered white" data-progrecss="50">
+<html class="progrecss mock fixed staggered white" data-progrecss="0">
 <head>
   <meta charset="utf-8">
   <title>2048</title>
@@ -24,26 +24,17 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <link href="style/progrecss.css" rel="stylesheet" type="text/css">
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <link href="style/progrecss.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <div class="container">
-
-    <div class="heading">
-      <h1 class="title">Tumblr 2048</h1>
-        <div style="display: none" class="scores-container">
-            <div class="score-container"></div>
-            <div class="best-container"></div>
-        </div>
-    </div>
 
     <div class="game-container">
       <div class="game-message">
         <p></p>
         <div class="lower">
 	        <a class="keep-playing-button">Keep going</a>
-          <a class="retry-button">Try again</a>
+            <a class="retry-button">Try again</a>
         </div>
       </div>
 
@@ -75,10 +66,10 @@
       </div>
 
       <div class="tile-container">
-
       </div>
     </div>
 
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="js/animframe_polyfill.js"></script>
   <script src="js/keyboard_input_manager.js"></script>
   <script src="js/html_actuator.js"></script>

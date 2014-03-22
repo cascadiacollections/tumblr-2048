@@ -15,6 +15,7 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
+  highestTileIndex = 0; // encapsulate
   this.actuator.continue();
   this.setup();
 };

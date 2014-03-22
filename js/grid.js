@@ -71,7 +71,7 @@ Grid.prototype.cellContent = function (cell) {
 
 // TODO: Kevin
 Grid.prototype.setHighestTile = function (tile) {
-    if (tile.value > highestTileIndex) highestTileIndex = tile.value; console.log("new highest: " + highestTileIndex);
+    if (tile.value > highestTileIndex) highestTileIndex = tile.value;
 };
 
 // Inserts a tile at its position

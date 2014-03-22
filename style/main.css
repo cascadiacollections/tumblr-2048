@@ -686,8 +686,17 @@ hr {
 /* Kevin */
 img {
     display: block;
+    height: 107px;
+    width: 107px;
 }
 
 .wrapper {
     display: block;
+}
+
+@media screen and (max-width: 520px) {
+    img {
+        height: 58px;
+        width: 58px;
+    }
 }
