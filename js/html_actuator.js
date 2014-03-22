@@ -64,6 +64,10 @@ HTMLActuator.prototype.addTile = function (tile) {
   inner.classList.add("tile-inner");
   inner.textContent = tile.value;
 
+  console.log("ADDING: " + tile.value);
+  // TODO: Kevin added
+  inner.innerHTML = '<img height="107px" width="107px" src="' + tumbles[tile.value].url + '" />';
+
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
     window.requestAnimationFrame(function () {
