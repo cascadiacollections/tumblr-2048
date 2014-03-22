@@ -3,7 +3,7 @@ window.requestAnimationFrame(function() {
     window.tumbles = {};
     var apiKey = "pzlRGPOKNPtpU74Uxd66TM2b6JIdUhKSOaJ0p7dGdIVv7IffSU";
     var limit = 11;
-    var tumblrURL = "http://api.tumblr.com/v2/blog/staff.tumblr.com/posts/photo?limit=" + limit + "&callback=?";
+    var tumblrURL = "http://api.tumblr.com/v2/blog/iheartcatgifs.tumblr.com/posts/photo?limit=" + limit + "&callback=?";
 
 
     function getTumbles() {
