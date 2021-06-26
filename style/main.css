@@ -1,10 +1,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #2c4762 url('https://www.tumblr.com/images/background.png?de266503a28e22aff41c30146ca83c24') top repeat-x;
+  background: #2c4762;
   color: #E7E7E7;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px; }
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
 
 body {
   margin: 80px 0; }
