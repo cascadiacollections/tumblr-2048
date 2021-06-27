@@ -29,6 +29,4 @@ window.requestAnimationFrame(function() {
         });
         new GameManager(4, KeyboardInputManager, HTMLActuator, LocalScoreManager);
     });
-
-    //new GameManager(4, KeyboardInputManager, HTMLActuator, LocalScoreManager);
 });
