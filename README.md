@@ -1,4 +1,7 @@
 # 2048
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f8bbcb83-5020-4c49-95a2-864dde1f1774/deploy-status)](https://app.netlify.com/sites/tumblr-2048/deploys)
+
 A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
 
 Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
