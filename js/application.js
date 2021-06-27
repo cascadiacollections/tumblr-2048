@@ -1,4 +1,4 @@
-// Wait till the browser is ready to render the game (avoids glitches)
+// @ts-check
 window.requestAnimationFrame(function() {
     window.tumbles = {};
     var apiKey = "pzlRGPOKNPtpU74Uxd66TM2b6JIdUhKSOaJ0p7dGdIVv7IffSU";

@@ -1,3 +1,4 @@
+// @ts-check
 window.fakeStorage = {
   _data: {},
 
