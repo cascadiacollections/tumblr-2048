@@ -1,11 +1,8 @@
 {
   "name": "tumblr-2048",
   "version": "1.0.0",
-  "description": "Tumblr 2048 variant",
+  "description": "2048 game using the tumblr API",
   "main": "index.js",
-  "devDependencies": {
-    "@types/jquery": "^3.5.5"
-  },
   "scripts": {
     "start": "http-server -o"
   },
@@ -23,8 +20,8 @@
     "url": "https://github.com/KevinTCoughlin/tumblr-2048/issues"
   },
   "homepage": "https://github.com/KevinTCoughlin/tumblr-2048#readme",
-  "dependencies": {
-    "global": "^4.4.0",
-    "http-server": "^0.12.3"
+  "devDependencies": {
+    "http-server": "14.1.1",
+    "@types/jquery": "3.5.14"
   }
 }
