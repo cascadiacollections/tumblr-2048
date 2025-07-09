@@ -21,7 +21,7 @@ gh codespace create --repo cascadiacollections/tumblr-2048
 
 ### Automatic Setup
 When your Codespace starts, the following happens automatically:
-- Node.js 18 environment is configured
+- Node.js 22 environment is configured
 - All dependencies are installed via `npm install`
 - Development server starts on port 8080
 - Browser automatically opens to the running game
