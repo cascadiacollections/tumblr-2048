@@ -1,0 +1,41 @@
+{
+  "name": "Tumblr 2048 Development",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-html-languageservice",
+        "ms-vscode.vscode-css-languageservice",
+        "ms-vscode.vscode-json-languageservice",
+        "ms-vscode.js-debug",
+        "bradlc.vscode-tailwindcss",
+        "ritwickdey.liveserver",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode.vscode-typescript-next",
+        "ms-playwright.playwright",
+        "esbenp.prettier-vscode",
+        "ms-vscode.theme-predawnkit"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Development Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  "postCreateCommand": "npm install",
+
+  "remoteUser": "node"
+}
