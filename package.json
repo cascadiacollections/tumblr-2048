@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/KevinTCoughlin/tumblr-2048#readme",
   "devDependencies": {
-    "http-server": "14.1.1",
-    "@types/jquery": "3.5.14"
+    "@types/jquery": "3.5.14",
+    "http-server": "14.1.1"
   }
 }
