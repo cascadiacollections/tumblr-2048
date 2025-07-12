@@ -79,6 +79,7 @@ Create a descriptive branch name using one of these prefixes:
    - Ensure Tumblr API integration still functions
 
 4. **Commit your changes** with a descriptive message:
+
    ```bash
    git add .
    git commit -m "feat: add dark mode toggle functionality"
@@ -98,6 +99,7 @@ Create a descriptive branch name using one of these prefixes:
 ### Submitting Your PR
 
 1. **Push your branch** to your fork:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -137,6 +139,7 @@ When suggesting features:
 ## 📝 Coding Standards
 
 ### JavaScript
+
 - Use `const` and `let` instead of `var`
 - Use arrow functions for callbacks
 - Add JSDoc comments for functions
@@ -144,12 +147,14 @@ When suggesting features:
 - Handle errors gracefully
 
 ### CSS
+
 - Use semantic class names
 - Maintain responsive design principles
 - Consider accessibility (a11y) requirements
 - Use CSS custom properties for theming
 
 ### HTML
+
 - Use semantic HTML elements
 - Ensure proper accessibility attributes
 - Validate markup when possible
