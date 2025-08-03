@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Allow up to 10 open pull requests for npm dependencies
+    open-pull-requests-limit: 10
+    # Add reviewers and assignees for npm dependencies
+    reviewers:
+      - "KevinTCoughlin"
+    # Add labels to npm pull requests
+    labels:
+      - "dependencies"
+      - "npm"
