@@ -1,9 +1,14 @@
 // @ts-check
 'use strict';
 
+import { GameManager } from './game_manager.js';
+import { KeyboardInputManager } from './keyboard_input_manager.js';
+import { HTMLActuator } from './html_actuator.js';
+import { LocalScoreManager } from './local_score_manager.js';
+
 /**
  * Fetches cat GIF posts from Tumblr API
- * @returns {JQuery.jqXHR} jQuery AJAX promise
+ * @returns {Promise<Object>} Promise with Tumblr API response
  */
 function getTumbles() {
   const CONFIG = {
@@ -12,23 +17,23 @@ function getTumbles() {
     blogUrl: 'newscatgif.tumblr.com',
   };
 
-  const tumblrURL = `https://api.tumblr.com/v2/blog/${CONFIG.blogUrl}/posts/photo?limit=${CONFIG.limit}&callback=?`;
+  const tumblrURL = `https://api.tumblr.com/v2/blog/${CONFIG.blogUrl}/posts/photo?api_key=${CONFIG.apiKey}&limit=${CONFIG.limit}`;
 
-  // @ts-ignore
-  return $.ajax({
-    type: 'GET',
-    url: tumblrURL,
-    dataType: 'jsonp',
-    jsonpCallback: 'jsonpCallback',
-    cache: true,
-    data: {
-      api_key: CONFIG.apiKey,
-    },
-    timeout: 10000, // 10 second timeout
-    error: function (xhr, status, error) {
+  return fetch(tumblrURL, {
+    method: 'GET',
+    cache: 'default',
+    signal: AbortSignal.timeout(10000), // 10 second timeout
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
       console.error('Failed to fetch tumbles:', error);
-    },
-  });
+      throw error;
+    });
 }
 
 /**
@@ -41,8 +46,7 @@ function processTumbles(data) {
     return;
   }
 
-  // @ts-ignore
-  $.each(data.response.posts, (key, value) => {
+  data.response.posts.forEach((value, key) => {
     const keyNum = Number(key);
     const index = Math.pow(2, keyNum + 1);
 
@@ -74,13 +78,12 @@ window.tumbles = {};
 
 // Start the application when DOM is ready
 window.requestAnimationFrame(() => {
-  // @ts-ignore - jQuery AJAX returns jqXHR which has done/fail methods
   getTumbles()
-    .done((data) => {
+    .then((data) => {
       processTumbles(data);
       initializeGame();
     })
-    .fail((xhr, status, error) => {
+    .catch((error) => {
       console.error('Failed to load Tumblr data:', error);
       // Initialize game anyway with fallback behavior
       initializeGame();

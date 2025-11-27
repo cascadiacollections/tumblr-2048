@@ -1,62 +1,76 @@
 doctype html
-html.progrecss.mock.fixed.staggered.white(data-progrecss='0')
+html.progrecss.mock.fixed.staggered.white(data-progrecss='0', lang='en')
   head
     meta(charset='utf-8')
     title 2048 Cat GIFs powered by Tumblr API
+    meta(name='description', content='Play 2048 with adorable cat GIFs from Tumblr')
     link(
       href='node_modules/modern-normalize/modern-normalize.css',
       rel='stylesheet',
       type='text/css'
     )
-    link(href='style/main.css', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='style/main.css')
     link(rel='shortcut icon', href='favicon.ico')
     link(rel='apple-touch-icon', href='meta/apple-touch-icon.png')
-    meta(name='apple-mobile-web-app-capable', content='yes')
-    meta(name='HandheldFriendly', content='True')
-    meta(name='MobileOptimized', content='320')
-    meta(
-      name='viewport',
-      content='width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui'
-    )
-    link(href='style/progrecss.css', rel='stylesheet', type='text/css')
+    meta(name='theme-color', content='#ffffff')
 
   body
     .container
+      .heading
+        h1.title 2048
+        .scores-container
+          .score-container 0
+          .best-container 0
+        p.game-intro Join the numbers and get to the
+          |
+          strong 2048 tile!
+
       .game-container
-        .game-message
+        .game-message(role='alert', aria-live='assertive', aria-atomic='true')
           p
           .lower
             a.keep-playing-button Keep going
             a.retry-button Try again
 
-        .grid-container
+        .grid-container(role='grid', aria-label='2048 game board')
           - for (let row = 0; row < 4; row++)
-            .grid-row
+            .grid-row(role='row')
               - for (let col = 0; col < 4; col++)
-                .grid-cell
+                .grid-cell(role='gridcell')
 
-        .tile-container
+        .tile-container(aria-live='polite', aria-atomic='false')
+
+      p.game-explanation
+        strong.important How to play:
+        |
+        | Use your
+        strong arrow keys
+        |
+        | to move the tiles. When two tiles with the same number touch, they
+        strong merge into one!
+
+      hr
+      p
+        | Created by
+        a(href='http://gabrielecirulli.com', target='_blank') Gabriele Cirulli.
+        |
+        | Based on
+        a(href='https://itunes.apple.com/us/app/1024!/id823499224', target='_blank') 1024 by Veewo Studio
+        |
+        | and conceptually similar to
+        a(href='http://asherv.com/threes/', target='_blank') Threes by Asher Vollmer.
+      p
+        | Cat GIFs from
+        a(href='http://tumblr.com', target='_blank') Tumblr.
 
     //- Scripts
-    script(
-      src='https://code.jquery.com/jquery-3.7.1.min.js',
-      integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=',
-      crossorigin='anonymous'
-    )
-    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js')
-    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js')
-    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-performance.js')
-    script(src='js/keyboard_input_manager.js')
-    script(src='js/html_actuator.js')
-    script(src='js/grid.js')
-    script(src='js/tile.js')
-    script(src='js/local_score_manager.js')
-    script(src='js/game_manager.js')
-    script(src='js/application.js')
+    script(type='module').
+      // Firebase v12 modular imports
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js';
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js';
+      import { getPerformance } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-performance.js';
 
-    //- Firebase configuration
-    script.
-      var firebaseConfig = {
+      const firebaseConfig = {
         apiKey: 'AIzaSyDTnqseSgb4PRAAqu33scobYL-6bI6F61E',
         authDomain: 'tumblr2048-a96a4.firebaseapp.com',
         projectId: 'tumblr2048-a96a4',
@@ -65,6 +79,9 @@ html.progrecss.mock.fixed.staggered.white(data-progrecss='0')
         appId: '1:110453299973:web:7365e49199380b425cf56c',
         measurementId: 'G-1B06YPGQ62',
       };
-      firebase.initializeApp(firebaseConfig);
-      firebase.performance();
-      firebase.analytics();
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const perf = getPerformance(app);
+
+    script(type='module', src='js/application.js')

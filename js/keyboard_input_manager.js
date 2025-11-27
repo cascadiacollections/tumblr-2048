@@ -1,5 +1,8 @@
 // @ts-check
-class KeyboardInputManager {
+/**
+ * Manages keyboard and touch input.
+ */
+export class KeyboardInputManager {
   constructor() {
     this.events = {};
 
@@ -23,17 +26,20 @@ class KeyboardInputManager {
     this.events[event].push(callback);
   }
   emit(event, data) {
-    var callbacks = this.events[event];
+    const callbacks = this.events[event];
     if (callbacks) {
       callbacks.forEach(function (callback) {
         callback(data);
       });
     }
   }
+  /**
+   * Listen for input events.
+   */
   listen() {
-    var self = this;
+    const self = this;
 
-    var map = {
+    const map = {
       38: 0,
       39: 1,
       40: 2,
@@ -48,9 +54,10 @@ class KeyboardInputManager {
       65: 3, // A
     };
 
+    // @ts-ignore
     document.addEventListener('keydown', function (event) {
-      var modifiers = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
-      var mapped = map[event.which];
+      const modifiers = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+      const mapped = map[event.which];
 
       if (!modifiers) {
         if (mapped !== undefined) {
@@ -58,28 +65,36 @@ class KeyboardInputManager {
           self.emit('move', mapped);
         }
 
-        if (event.which === 32) self.restart.bind(self)(event);
+        if (event.which === 32) {
+          self.restart.bind(self)(event);
+        }
       }
     });
 
-    var retry = document.querySelector('.retry-button');
+    const retry = document.querySelector('.retry-button');
+    // @ts-ignore
     retry.addEventListener('click', this.restart.bind(this));
+    // @ts-ignore
     retry.addEventListener(this.eventTouchend, this.restart.bind(this));
 
-    var keepPlaying = document.querySelector('.keep-playing-button');
+    const keepPlaying = document.querySelector('.keep-playing-button');
+    // @ts-ignore
     keepPlaying.addEventListener('click', this.keepPlaying.bind(this));
+    // @ts-ignore
     keepPlaying.addEventListener('touchend', this.keepPlaying.bind(this));
 
     // Listen to swipe events
-    var touchStartClientX, touchStartClientY;
-    var gameContainer = document.getElementsByClassName('game-container')[0];
+    let touchStartClientX, touchStartClientY;
+    const gameContainer = document.getElementsByClassName('game-container')[0];
 
+    // @ts-ignore
     gameContainer.addEventListener(this.eventTouchstart, function (event) {
       if (
         (!window.navigator.msPointerEnabled && event.touches.length > 1) ||
         event.targetTouches > 1
-      )
+      ) {
         return;
+      }
 
       if (window.navigator.msPointerEnabled) {
         touchStartClientX = event.pageX;
@@ -92,18 +107,22 @@ class KeyboardInputManager {
       event.preventDefault();
     });
 
+    // @ts-ignore
     gameContainer.addEventListener(this.eventTouchmove, function (event) {
       event.preventDefault();
     });
 
+    // @ts-ignore
     gameContainer.addEventListener(this.eventTouchend, function (event) {
       if (
         (!window.navigator.msPointerEnabled && event.touches.length > 0) ||
         event.targetTouches > 0
-      )
+      ) {
         return;
+      }
 
-      var touchEndClientX, touchEndClientY;
+      let touchEndClientX, touchEndClientY;
+
       if (window.navigator.msPointerEnabled) {
         touchEndClientX = event.pageX;
         touchEndClientY = event.pageY;
@@ -112,11 +131,11 @@ class KeyboardInputManager {
         touchEndClientY = event.changedTouches[0].clientY;
       }
 
-      var dx = touchEndClientX - touchStartClientX;
-      var absDx = Math.abs(dx);
+      const dx = touchEndClientX - touchStartClientX;
+      const absDx = Math.abs(dx);
 
-      var dy = touchEndClientY - touchStartClientY;
-      var absDy = Math.abs(dy);
+      const dy = touchEndClientY - touchStartClientY;
+      const absDy = Math.abs(dy);
 
       if (Math.max(absDx, absDy) > 10) {
         // (right : left) : (down : up)
@@ -124,10 +143,19 @@ class KeyboardInputManager {
       }
     });
   }
+  /**
+   * Restart the game.
+   * @param {Event} event
+   */
   restart(event) {
     event.preventDefault();
     this.emit('restart');
   }
+
+  /**
+   * Keep playing.
+   * @param {Event} event
+   */
   keepPlaying(event) {
     event.preventDefault();
     this.emit('keepPlaying');

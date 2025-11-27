@@ -9,11 +9,9 @@ export default [
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: 'script',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.jquery,
-        $: 'readonly',
         firebase: 'readonly',
         GameManager: 'writable',
         Grid: 'writable',
@@ -30,7 +28,7 @@ export default [
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern:
-            '^(GameManager|Grid|HTMLActuator|KeyboardInputManager|LocalScoreManager|Tile|highestTileIndex)$',
+            '^(GameManager|Grid|HTMLActuator|KeyboardInputManager|LocalScoreManager|Tile|highestTileIndex|_.*)$',
         },
       ],
       'no-console': 'off',
@@ -44,7 +42,13 @@ export default [
     },
   },
   {
-    files: ['eslint.config.js'],
+    files: [
+      'eslint.config.js',
+      'vite.config.js',
+      'vitest.config.js',
+      'playwright.config.js',
+      'tests/**/*.js',
+    ],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',

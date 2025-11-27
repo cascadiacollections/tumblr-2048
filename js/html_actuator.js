@@ -1,5 +1,8 @@
 // @ts-check
-class HTMLActuator {
+/**
+ * Handles the HTML updates and rendering of the game.
+ */
+export class HTMLActuator {
   constructor() {
     this.tileContainer = document.querySelector('.tile-container');
     this.scoreContainer = document.querySelector('.score-container');
@@ -8,7 +11,7 @@ class HTMLActuator {
     this.score = 0;
   }
   actuate(grid, metadata) {
-    var self = this;
+    const self = this;
 
     window.requestAnimationFrame(function () {
       self.clearContainer(self.tileContainer);
@@ -42,26 +45,36 @@ class HTMLActuator {
       container.removeChild(container.firstChild);
     }
   }
+  /**
+   * Adds a tile to the grid.
+   * @param {Tile} tile
+   */
   addTile(tile) {
-    var self = this;
+    const self = this;
 
-    var wrapper = document.createElement('div');
-    var inner = document.createElement('div');
-    var position = tile.previousPosition || { x: tile.x, y: tile.y };
-    var positionClass = this.positionClass(position);
+    const wrapper = document.createElement('div');
+    const inner = document.createElement('div');
+    const position = tile.previousPosition || { x: tile.x, y: tile.y };
+    const positionClass = this.positionClass(position);
 
     // We can't use classlist because it somehow glitches when replacing classes
-    var classes = ['tile', 'tile-' + tile.value, positionClass];
+    const classes = ['tile', 'tile-' + tile.value, positionClass];
 
-    if (tile.value > 2048) classes.push('tile-super');
+    if (tile.value > 2048) {
+      classes.push('tile-super');
+    }
 
     this.applyClasses(wrapper, classes);
 
     inner.classList.add('tile-inner');
-    inner.textContent = tile.value;
+    inner.textContent = String(tile.value);
 
     // TODO: Kevin added
-    inner.innerHTML = '<img src="' + window.tumbles[tile.value].url + '" />';
+    // @ts-ignore
+    if (window.tumbles && window.tumbles[tile.value]) {
+      // @ts-ignore
+      inner.innerHTML = '<img src="' + window.tumbles[tile.value].url + '" alt="Cat GIF" />';
+    }
 
     if (tile.previousPosition) {
       // Make sure that the tile gets rendered in the previous position first
@@ -86,48 +99,93 @@ class HTMLActuator {
     wrapper.appendChild(inner);
 
     // Put the tile on the board
+    // @ts-ignore
     this.tileContainer.appendChild(wrapper);
   }
+  /**
+   * Applies classes to an element.
+   * @param {HTMLElement} element
+   * @param {string[]} classes
+   */
   applyClasses(element, classes) {
     element.setAttribute('class', classes.join(' '));
   }
+
+  /**
+   * Normalizes the position (1-based index).
+   * @param {{x: number, y: number}} position
+   * @returns {{x: number, y: number}}
+   */
   normalizePosition(position) {
     return { x: position.x + 1, y: position.y + 1 };
   }
+
+  /**
+   * Generates the class name for a position.
+   * @param {{x: number, y: number}} position
+   * @returns {string}
+   */
   positionClass(position) {
     position = this.normalizePosition(position);
     return 'tile-position-' + position.x + '-' + position.y;
   }
+
+  /**
+   * Updates the score.
+   * @param {number} score
+   */
   updateScore(score) {
     //this.clearContainer(this.scoreContainer);
-    var difference = score - this.score;
+    const difference = score - this.score;
     this.score = score;
 
     //this.scoreContainer.textContent = this.score;
     if (difference > 0) {
-      var addition = document.createElement('div');
+      const addition = document.createElement('div');
       addition.classList.add('score-addition');
       addition.textContent = '+' + difference;
 
       //this.scoreContainer.appendChild(addition);
     }
 
-    var percentage = Math.round((window.tumbles[highestTileIndex].id / 11) * 100);
-    $('html').attr('data-progrecss', percentage);
+    // @ts-ignore
+    if (window.tumbles && window.tumbles[highestTileIndex]) {
+      // @ts-ignore
+      const percentage = Math.round((window.tumbles[highestTileIndex].id / 11) * 100);
+      document.documentElement.setAttribute('data-progrecss', String(percentage));
+    }
   }
-  updateBestScore(bestScore) {
+
+  /**
+   * Updates the best score.
+   * @param {number} _bestScore
+   */
+  updateBestScore(_bestScore) {
     //this.bestContainer.textContent = bestScore;
   }
-  message(won) {
-    var type = won ? 'game-won' : 'game-over';
-    var message = won ? 'You win!' : 'Game over!';
 
+  /**
+   * Displays a message (win/lose).
+   * @param {boolean} won
+   */
+  message(won) {
+    const type = won ? 'game-won' : 'game-over';
+    const message = won ? 'You win!' : 'Game over!';
+
+    // @ts-ignore
     this.messageContainer.classList.add(type);
+    // @ts-ignore
     this.messageContainer.getElementsByTagName('p')[0].textContent = message;
   }
+
+  /**
+   * Clears the message.
+   */
   clearMessage() {
     // IE only takes one value to remove at a time.
+    // @ts-ignore
     this.messageContainer.classList.remove('game-won');
+    // @ts-ignore
     this.messageContainer.classList.remove('game-over');
   }
 }

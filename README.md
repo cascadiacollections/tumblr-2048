@@ -1,89 +1,265 @@
-# 2048
+# 2048 Cat GIFs 🐱
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f8bbcb83-5020-4c49-95a2-864dde1f1774/deploy-status)](https://app.netlify.com/sites/tumblr-2048/deploys)
+A modern implementation of the classic 2048 game featuring adorable cat GIFs from Tumblr.
 
-A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
+## ✨ Features
 
-### Contributions
+- 🎮 **Classic 2048 Gameplay** - Swipe or use arrow keys to combine tiles
+- 🐈 **Cat GIF Integration** - Every tile is an adorable cat GIF from Tumblr
+- 📱 **PWA Support** - Install as a standalone app, works offline
+- ♿ **Accessibility First** - ARIA labels, keyboard navigation, screen reader support
+- 🎨 **Modern CSS** - CSS custom properties, dark mode support, reduced motion
+- 🚀 **Vite Build System** - Lightning-fast HMR and optimized production builds
+- 🧪 **Comprehensive Testing** - Unit tests (Vitest) and E2E tests (Playwright)
+- 📊 **Firebase Analytics** - Performance monitoring and analytics (v12)
+- 💾 **Local Storage** - Score persistence across sessions
+- 🎯 **TypeScript Ready** - JSDoc annotations with type checking
 
-- [TimPetricola](https://github.com/TimPetricola) added best score storage
-- [chrisprice](https://github.com/chrisprice) added custom code for swipe handling on mobile
-- [elektryk](https://github.com/elektryk) made swipes work on Windows Phone
+## 🚀 Quick Start
 
-Many thanks to [rayhaanj](https://github.com/rayhaanj), [Mechazawa](https://github.com/Mechazawa), [grant](https://github.com/grant), [remram44](https://github.com/remram44) and [ghoullier](https://github.com/ghoullier) for the many other good contributions.
+### Prerequisites
 
-### Screenshot
+- Node.js >= 18.0.0
+- npm >= 9.0.0 or Yarn >= 1.22.0
 
-<p align="center">
-  <img src="http://pictures.gabrielecirulli.com/2048-20140309-234100.png" alt="Screenshot"/>
-</p>
-
-That screenshot is fake, by the way. I never reached 2048 :smile:
-
-## Contributing
-
-Changes and improvements are more than welcome! Feel free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`! If you can, please make sure the game fully works before sending the PR, as that will help speed up the process.
-
-You can find the same information in the [contributing guide.](https://github.com/gabrielecirulli/2048/blob/master/CONTRIBUTING.md)
-
-## Development
-
-This project supports both **npm** and **Yarn** package managers. See [SETUP.md](SETUP.md) for complete setup instructions.
-
-### Quick Start
+### Installation
 
 ```bash
-# Install dependencies (choose one)
-npm install
-# or
+# Clone the repository
+git clone https://github.com/cascadiacollections/tumblr-2048.git
+cd tumblr-2048
+
+# Install dependencies
 yarn install
+# or
+npm install
 
 # Start development server
-npm start
+yarn dev
 # or
-yarn start
+npm run dev
 ```
 
-### Available Commands
+The game will open automatically at `http://localhost:8080`
 
-| Command                              | Description                                     |
-| ------------------------------------ | ----------------------------------------------- |
-| `npm start` / `yarn start`           | Start development server with auto-open browser |
-| `npm run build` / `yarn build`       | Build Pug templates to HTML                     |
-| `npm run lint` / `yarn lint`         | Check code quality with ESLint                  |
-| `npm run format` / `yarn format`     | Format code with Prettier                       |
-| `npm run validate` / `yarn validate` | Run format check + lint                         |
+## 📦 Available Scripts
 
-**Note**: Don't mix package managers in the same project. Stick with either npm or Yarn to avoid lockfile conflicts.
+### Development
 
-### Pug Templates
+- `yarn dev` - Start Vite development server with HMR
+- `yarn serve` - Serve using http-server (legacy)
+- `yarn start` - Alias for `yarn dev`
 
-This project uses **Pug** (formerly Jade) for cleaner, more maintainable HTML:
+### Building
 
-- **Source:** `src/views/*.pug`
-- **Compiled:** `*.html` files in root
-- **Auto-rebuild:** Enabled in development mode
-- **Prettier support:** Automatic formatting for `.pug` files
+- `yarn build` - Build for production (includes Pug compilation)
+- `yarn build:pug` - Compile Pug templates to HTML
+- `yarn build:pug:watch` - Watch and compile Pug templates
+- `yarn preview` - Preview production build
 
-See `src/views/README.md` for Pug syntax guide and best practices.
+### Testing
 
-### GitHub Copilot Integration
+- `yarn test` - Run unit tests in watch mode
+- `yarn test:run` - Run unit tests once
+- `yarn test:coverage` - Run tests with coverage report
+- `yarn test:ui` - Open Vitest UI
+- `yarn test:e2e` - Run E2E tests with Playwright
+- `yarn test:e2e:ui` - Open Playwright UI
+- `yarn test:e2e:debug` - Debug E2E tests
 
-This project includes comprehensive GitHub Copilot configuration for AI-assisted development:
+### Code Quality
 
-- 📝 **Copilot Instructions** - Context and guidelines in `.github/copilot-instructions.md`
-- 🎯 **Custom Prompts** - Pre-configured prompts in `.github/copilot-prompts.md`
-- ⚙️ **Workspace Config** - Project structure context in `.github/copilot-workspace.yml`
-- 🚫 **Smart Ignores** - Optimized context with `.copilotignore`
+- `yarn lint` - Lint JavaScript files
+- `yarn lint:fix` - Auto-fix linting issues
+- `yarn format` - Format all files with Prettier
+- `yarn format:check` - Check formatting
+- `yarn validate` - Run format check, lint, and tests
 
-**Using Copilot**: Open the project in VS Code with GitHub Copilot installed. Copilot will automatically use project-specific context to provide better suggestions aligned with the codebase patterns, ESLint rules, and mobile-first design principles.
+## 🏗️ Project Structure
 
-## License
+```
+tumblr-2048/
+├── .github/              # GitHub configuration
+│   ├── copilot-*.md     # AI assistant documentation
+│   └── dependabot.yml   # Automated dependency updates
+├── .husky/              # Git hooks
+├── js/                  # Game logic (vanilla JavaScript)
+│   ├── application.js
+│   ├── game_manager.js
+│   ├── grid.js
+│   ├── html_actuator.js
+│   ├── keyboard_input_manager.js
+│   ├── local_score_manager.js
+│   └── tile.js
+├── src/views/           # Pug templates
+│   └── index.pug
+├── style/               # CSS files
+│   ├── main.css
+│   └── progrecss.css    # Progress bar (modernized 2025)
+├── tests/               # Test files
+│   ├── unit/           # Vitest unit tests
+│   └── e2e/            # Playwright E2E tests
+├── manifest.json        # PWA manifest
+├── sw.js               # Service worker
+├── vite.config.js      # Vite configuration
+├── vitest.config.js    # Vitest configuration
+├── playwright.config.js # Playwright configuration
+└── jsconfig.json       # JavaScript/TypeScript configuration
+```
 
-2048 is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
+## 🧪 Testing
 
-## Donations
+### Unit Tests
 
-I made this in my spare time, and it's hosted on GitHub (which means I don't have any hosting costs), but if you enjoyed the game and feel like buying me coffee, you can donate at my BTC address: `1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i`. Thank you very much!
+Unit tests are written with Vitest and focus on game logic:
+
+```bash
+# Watch mode
+yarn test
+
+# Run once
+yarn test:run
+
+# With coverage
+yarn test:coverage
+```
+
+### End-to-End Tests
+
+E2E tests use Playwright to test across browsers:
+
+```bash
+# Run all tests
+yarn test:e2e
+
+# Interactive UI mode
+yarn test:e2e:ui
+
+# Debug mode
+yarn test:e2e:debug
+```
+
+Tests run on:
+
+- Desktop: Chrome, Firefox, Safari
+- Mobile: Pixel 5 (Chrome), iPhone 12 (Safari)
+
+## ♿ Accessibility
+
+This game implements comprehensive accessibility features:
+
+- **ARIA Labels**: All interactive elements properly labeled
+- **Keyboard Navigation**: Full keyboard control with arrow keys
+- **Screen Readers**: Live regions announce game state changes
+- **Focus Management**: Visible focus indicators
+- **Reduced Motion**: Respects `prefers-reduced-motion`
+- **High Contrast**: Supports `prefers-contrast: high`
+- **Dark Mode**: Automatic dark mode via `prefers-color-scheme`
+
+## 📱 Progressive Web App
+
+Install the game as a standalone app:
+
+1. Visit the game in your browser
+2. Click the install icon in the address bar
+3. Or use "Add to Home Screen" on mobile
+
+PWA features:
+
+- **Offline Support**: Play without an internet connection
+- **Fast Loading**: Assets cached for instant startup
+- **Native Feel**: Runs in standalone window
+- **Auto Updates**: Service worker updates automatically
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and configure:
+
+```bash
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+# ... other Firebase config
+
+# Tumblr API
+VITE_TUMBLR_API_KEY=your_api_key
+VITE_TUMBLR_BLOG_URL=your_blog.tumblr.com
+```
+
+### Browser Support
+
+- Chrome/Edge (latest 2 versions)
+- Firefox (latest 2 versions)
+- Safari (latest 2 versions)
+- Mobile browsers (iOS Safari 14+, Chrome Mobile)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Run tests: `yarn validate`
+5. Commit with conventional commits: `git commit -m 'feat: add amazing feature'`
+6. Push to your fork: `git push origin feature/amazing-feature`
+7. Open a Pull Request
+
+Git hooks will automatically:
+
+- Format code with Prettier
+- Lint with ESLint
+- Run tests before push
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
+
+## 🙏 Credits
+
+- **Original 2048**: [Gabriele Cirulli](http://gabrielecirulli.com)
+- **Cat GIFs**: Tumblr API
+- **Made by**: [Kevin T. Coughlin](https://github.com/kevintcoughlin)
+- **With assistance from**: [GitHub Copilot](https://github.com/features/copilot) and Claude Sonnet
+
+### Inspiration
+
+- [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024) by Veewo Studio
+- [Threes](http://asherv.com/threes/) by Asher Vollmer
+
+## 🔒 Security
+
+See [SECURITY.md](SECURITY.md) for security policy and reporting vulnerabilities.
+
+## 📚 Documentation
+
+- [Setup Guide](SETUP.md) - Detailed setup instructions
+- [Contributing Guide](CONTRIBUTING.md) - How to contribute
+- [Security Policy](SECURITY.md) - Security practices
+- [Copilot Instructions](.github/copilot-instructions.md) - AI assistant guide
+
+## 🌟 What's New (2025)
+
+This version includes major modernizations:
+
+✅ **No jQuery** - Pure vanilla JavaScript, 30KB+ smaller
+✅ **Firebase v12** - Latest version with modular imports
+✅ **Vite Build System** - Modern bundling and HMR
+✅ **Comprehensive Tests** - Unit and E2E testing
+✅ **PWA Support** - Install and play offline
+✅ **Accessibility** - WCAG 2.1 AA compliant
+✅ **Modern CSS** - CSS Variables, dark mode, reduced motion
+✅ **Git Hooks** - Automated code quality checks
+✅ **Security** - Environment variables, CSP, .gitattributes
+
+---
+
+**[Play Now!](https://tumblr-2048.netlify.app)** | **[Report Bug](https://github.com/cascadiacollections/tumblr-2048/issues)** | **[Request Feature](https://github.com/cascadiacollections/tumblr-2048/issues)**
