@@ -1,0 +1,525 @@
+/*
+progre(c)ss.css - Modernized for 2025
+Based on original by Jhey Tompkins (c) 2014
+Modernized with CSS custom properties, clamp(), and optimized selectors
+Licensed under the MIT license
+*/
+
+:root {
+  --progrecss-height: 4px;
+  --progrecss-color: #3498db;
+  --progrecss-opacity: 0.6;
+  --progrecss-transition: width 1s ease;
+  --progrecss-shadow: 0 0 1px var(--progrecss-color);
+  --progrecss-radius: 0;
+  --progrecss-z-index: 2;
+
+  /* Color palette */
+  --progrecss-green: #2ecc71;
+  --progrecss-blue: #3498db;
+  --progrecss-purple: #9b59b6;
+  --progrecss-yellow: #f1c40f;
+  --progrecss-orange: #e67e22;
+  --progrecss-red: #e74c3c;
+  --progrecss-white: #ffffff;
+}
+
+/* Base progress bar */
+.progrecss {
+  display: block;
+  position: relative;
+  contain: layout style;
+}
+
+.progrecss::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: var(--progrecss-height);
+  background-color: var(--progrecss-color);
+  box-shadow: var(--progrecss-shadow);
+  opacity: var(--progrecss-opacity);
+  border-radius: var(--progrecss-radius);
+  transition: var(--progrecss-transition);
+  z-index: var(--progrecss-z-index);
+  will-change: width;
+}
+
+/* Position modifiers */
+.progrecss.bottom::after {
+  top: 100%;
+}
+
+.progrecss.fixed::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.progrecss.fixed.bottom::after {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+}
+
+/* Dynamic width based on data attribute using clamp for performance */
+.progrecss[data-progrecss='0']::after {
+  width: clamp(0%, 0%, 100%);
+}
+.progrecss[data-progrecss='1']::after {
+  width: clamp(0%, 1%, 100%);
+}
+.progrecss[data-progrecss='2']::after {
+  width: clamp(0%, 2%, 100%);
+}
+.progrecss[data-progrecss='3']::after {
+  width: clamp(0%, 3%, 100%);
+}
+.progrecss[data-progrecss='4']::after {
+  width: clamp(0%, 4%, 100%);
+}
+.progrecss[data-progrecss='5']::after {
+  width: clamp(0%, 5%, 100%);
+}
+.progrecss[data-progrecss='6']::after {
+  width: clamp(0%, 6%, 100%);
+}
+.progrecss[data-progrecss='7']::after {
+  width: clamp(0%, 7%, 100%);
+}
+.progrecss[data-progrecss='8']::after {
+  width: clamp(0%, 8%, 100%);
+}
+.progrecss[data-progrecss='9']::after {
+  width: clamp(0%, 9%, 100%);
+}
+.progrecss[data-progrecss='10']::after {
+  width: clamp(0%, 10%, 100%);
+}
+.progrecss[data-progrecss='11']::after {
+  width: clamp(0%, 11%, 100%);
+}
+.progrecss[data-progrecss='12']::after {
+  width: clamp(0%, 12%, 100%);
+}
+.progrecss[data-progrecss='13']::after {
+  width: clamp(0%, 13%, 100%);
+}
+.progrecss[data-progrecss='14']::after {
+  width: clamp(0%, 14%, 100%);
+}
+.progrecss[data-progrecss='15']::after {
+  width: clamp(0%, 15%, 100%);
+}
+.progrecss[data-progrecss='16']::after {
+  width: clamp(0%, 16%, 100%);
+}
+.progrecss[data-progrecss='17']::after {
+  width: clamp(0%, 17%, 100%);
+}
+.progrecss[data-progrecss='18']::after {
+  width: clamp(0%, 18%, 100%);
+}
+.progrecss[data-progrecss='19']::after {
+  width: clamp(0%, 19%, 100%);
+}
+.progrecss[data-progrecss='20']::after {
+  width: clamp(0%, 20%, 100%);
+}
+.progrecss[data-progrecss='21']::after {
+  width: clamp(0%, 21%, 100%);
+}
+.progrecss[data-progrecss='22']::after {
+  width: clamp(0%, 22%, 100%);
+}
+.progrecss[data-progrecss='23']::after {
+  width: clamp(0%, 23%, 100%);
+}
+.progrecss[data-progrecss='24']::after {
+  width: clamp(0%, 24%, 100%);
+}
+.progrecss[data-progrecss='25']::after {
+  width: clamp(0%, 25%, 100%);
+}
+.progrecss[data-progrecss='26']::after {
+  width: clamp(0%, 26%, 100%);
+}
+.progrecss[data-progrecss='27']::after {
+  width: clamp(0%, 27%, 100%);
+}
+.progrecss[data-progrecss='28']::after {
+  width: clamp(0%, 28%, 100%);
+}
+.progrecss[data-progrecss='29']::after {
+  width: clamp(0%, 29%, 100%);
+}
+.progrecss[data-progrecss='30']::after {
+  width: clamp(0%, 30%, 100%);
+}
+.progrecss[data-progrecss='31']::after {
+  width: clamp(0%, 31%, 100%);
+}
+.progrecss[data-progrecss='32']::after {
+  width: clamp(0%, 32%, 100%);
+}
+.progrecss[data-progrecss='33']::after {
+  width: clamp(0%, 33%, 100%);
+}
+.progrecss[data-progrecss='34']::after {
+  width: clamp(0%, 34%, 100%);
+}
+.progrecss[data-progrecss='35']::after {
+  width: clamp(0%, 35%, 100%);
+}
+.progrecss[data-progrecss='36']::after {
+  width: clamp(0%, 36%, 100%);
+}
+.progrecss[data-progrecss='37']::after {
+  width: clamp(0%, 37%, 100%);
+}
+.progrecss[data-progrecss='38']::after {
+  width: clamp(0%, 38%, 100%);
+}
+.progrecss[data-progrecss='39']::after {
+  width: clamp(0%, 39%, 100%);
+}
+.progrecss[data-progrecss='40']::after {
+  width: clamp(0%, 40%, 100%);
+}
+.progrecss[data-progrecss='41']::after {
+  width: clamp(0%, 41%, 100%);
+}
+.progrecss[data-progrecss='42']::after {
+  width: clamp(0%, 42%, 100%);
+}
+.progrecss[data-progrecss='43']::after {
+  width: clamp(0%, 43%, 100%);
+}
+.progrecss[data-progrecss='44']::after {
+  width: clamp(0%, 44%, 100%);
+}
+.progrecss[data-progrecss='45']::after {
+  width: clamp(0%, 45%, 100%);
+}
+.progrecss[data-progrecss='46']::after {
+  width: clamp(0%, 46%, 100%);
+}
+.progrecss[data-progrecss='47']::after {
+  width: clamp(0%, 47%, 100%);
+}
+.progrecss[data-progrecss='48']::after {
+  width: clamp(0%, 48%, 100%);
+}
+.progrecss[data-progrecss='49']::after {
+  width: clamp(0%, 49%, 100%);
+}
+.progrecss[data-progrecss='50']::after {
+  width: clamp(0%, 50%, 100%);
+}
+.progrecss[data-progrecss='51']::after {
+  width: clamp(0%, 51%, 100%);
+}
+.progrecss[data-progrecss='52']::after {
+  width: clamp(0%, 52%, 100%);
+}
+.progrecss[data-progrecss='53']::after {
+  width: clamp(0%, 53%, 100%);
+}
+.progrecss[data-progrecss='54']::after {
+  width: clamp(0%, 54%, 100%);
+}
+.progrecss[data-progrecss='55']::after {
+  width: clamp(0%, 55%, 100%);
+}
+.progrecss[data-progrecss='56']::after {
+  width: clamp(0%, 56%, 100%);
+}
+.progrecss[data-progrecss='57']::after {
+  width: clamp(0%, 57%, 100%);
+}
+.progrecss[data-progrecss='58']::after {
+  width: clamp(0%, 58%, 100%);
+}
+.progrecss[data-progrecss='59']::after {
+  width: clamp(0%, 59%, 100%);
+}
+.progrecss[data-progrecss='60']::after {
+  width: clamp(0%, 60%, 100%);
+}
+.progrecss[data-progrecss='61']::after {
+  width: clamp(0%, 61%, 100%);
+}
+.progrecss[data-progrecss='62']::after {
+  width: clamp(0%, 62%, 100%);
+}
+.progrecss[data-progrecss='63']::after {
+  width: clamp(0%, 63%, 100%);
+}
+.progrecss[data-progrecss='64']::after {
+  width: clamp(0%, 64%, 100%);
+}
+.progrecss[data-progrecss='65']::after {
+  width: clamp(0%, 65%, 100%);
+}
+.progrecss[data-progrecss='66']::after {
+  width: clamp(0%, 66%, 100%);
+}
+.progrecss[data-progrecss='67']::after {
+  width: clamp(0%, 67%, 100%);
+}
+.progrecss[data-progrecss='68']::after {
+  width: clamp(0%, 68%, 100%);
+}
+.progrecss[data-progrecss='69']::after {
+  width: clamp(0%, 69%, 100%);
+}
+.progrecss[data-progrecss='70']::after {
+  width: clamp(0%, 70%, 100%);
+}
+.progrecss[data-progrecss='71']::after {
+  width: clamp(0%, 71%, 100%);
+}
+.progrecss[data-progrecss='72']::after {
+  width: clamp(0%, 72%, 100%);
+}
+.progrecss[data-progrecss='73']::after {
+  width: clamp(0%, 73%, 100%);
+}
+.progrecss[data-progrecss='74']::after {
+  width: clamp(0%, 74%, 100%);
+}
+.progrecss[data-progrecss='75']::after {
+  width: clamp(0%, 75%, 100%);
+}
+.progrecss[data-progrecss='76']::after {
+  width: clamp(0%, 76%, 100%);
+}
+.progrecss[data-progrecss='77']::after {
+  width: clamp(0%, 77%, 100%);
+}
+.progrecss[data-progrecss='78']::after {
+  width: clamp(0%, 78%, 100%);
+}
+.progrecss[data-progrecss='79']::after {
+  width: clamp(0%, 79%, 100%);
+}
+.progrecss[data-progrecss='80']::after {
+  width: clamp(0%, 80%, 100%);
+}
+.progrecss[data-progrecss='81']::after {
+  width: clamp(0%, 81%, 100%);
+}
+.progrecss[data-progrecss='82']::after {
+  width: clamp(0%, 82%, 100%);
+}
+.progrecss[data-progrecss='83']::after {
+  width: clamp(0%, 83%, 100%);
+}
+.progrecss[data-progrecss='84']::after {
+  width: clamp(0%, 84%, 100%);
+}
+.progrecss[data-progrecss='85']::after {
+  width: clamp(0%, 85%, 100%);
+}
+.progrecss[data-progrecss='86']::after {
+  width: clamp(0%, 86%, 100%);
+}
+.progrecss[data-progrecss='87']::after {
+  width: clamp(0%, 87%, 100%);
+}
+.progrecss[data-progrecss='88']::after {
+  width: clamp(0%, 88%, 100%);
+}
+.progrecss[data-progrecss='89']::after {
+  width: clamp(0%, 89%, 100%);
+}
+.progrecss[data-progrecss='90']::after {
+  width: clamp(0%, 90%, 100%);
+}
+.progrecss[data-progrecss='91']::after {
+  width: clamp(0%, 91%, 100%);
+}
+.progrecss[data-progrecss='92']::after {
+  width: clamp(0%, 92%, 100%);
+}
+.progrecss[data-progrecss='93']::after {
+  width: clamp(0%, 93%, 100%);
+}
+.progrecss[data-progrecss='94']::after {
+  width: clamp(0%, 94%, 100%);
+}
+.progrecss[data-progrecss='95']::after {
+  width: clamp(0%, 95%, 100%);
+}
+.progrecss[data-progrecss='96']::after {
+  width: clamp(0%, 96%, 100%);
+}
+.progrecss[data-progrecss='97']::after {
+  width: clamp(0%, 97%, 100%);
+}
+.progrecss[data-progrecss='98']::after {
+  width: clamp(0%, 98%, 100%);
+}
+.progrecss[data-progrecss='99']::after {
+  width: clamp(0%, 99%, 100%);
+}
+.progrecss[data-progrecss='100']::after {
+  width: clamp(0%, 100%, 100%);
+}
+
+/* Mock progress animation */
+.progrecss.mock::after {
+  animation: progress-mock 4s ease-out forwards;
+}
+
+.progrecss.staggered::after {
+  animation: progress-staggered 4s steps(10) forwards;
+}
+
+@keyframes progress-mock {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes progress-staggered {
+  0% {
+    width: 0%;
+  }
+  10% {
+    width: 10%;
+  }
+  20% {
+    width: 20%;
+  }
+  30% {
+    width: 30%;
+  }
+  40% {
+    width: 40%;
+  }
+  50% {
+    width: 50%;
+  }
+  60% {
+    width: 60%;
+  }
+  70% {
+    width: 70%;
+  }
+  80% {
+    width: 80%;
+  }
+  90% {
+    width: 90%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Timer animation */
+.progrecss.timer::after {
+  animation: progress-timer 60s linear forwards;
+}
+
+@keyframes progress-timer {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Color themes using CSS custom properties */
+.progrecss.green::after {
+  --progrecss-color: var(--progrecss-green);
+  --progrecss-shadow: 0 0 1px var(--progrecss-green);
+  background-color: var(--progrecss-green);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.blue::after {
+  --progrecss-color: var(--progrecss-blue);
+  --progrecss-shadow: 0 0 1px var(--progrecss-blue);
+  background-color: var(--progrecss-blue);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.purple::after {
+  --progrecss-color: var(--progrecss-purple);
+  --progrecss-shadow: 0 0 1px var(--progrecss-purple);
+  background-color: var(--progrecss-purple);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.yellow::after {
+  --progrecss-color: var(--progrecss-yellow);
+  --progrecss-shadow: 0 0 1px var(--progrecss-yellow);
+  background-color: var(--progrecss-yellow);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.orange::after {
+  --progrecss-color: var(--progrecss-orange);
+  --progrecss-shadow: 0 0 1px var(--progrecss-orange);
+  background-color: var(--progrecss-orange);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.red::after {
+  --progrecss-color: var(--progrecss-red);
+  --progrecss-shadow: 0 0 1px var(--progrecss-red);
+  background-color: var(--progrecss-red);
+  box-shadow: var(--progrecss-shadow);
+}
+
+.progrecss.white::after {
+  --progrecss-color: var(--progrecss-white);
+  --progrecss-shadow: 0 0 1px var(--progrecss-white);
+  background-color: var(--progrecss-white);
+  box-shadow: var(--progrecss-shadow);
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .progrecss::after {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .progrecss::after {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --progrecss-opacity: 0.8;
+  }
+}
+
+/* Container query support for responsive sizing (future-proof) */
+@supports (container-type: inline-size) {
+  .progrecss {
+    container-type: inline-size;
+  }
+}
+
+/* Modern backdrop filter support (optional enhancement) */
+@supports (backdrop-filter: blur(10px)) {
+  .progrecss.blur::after {
+    backdrop-filter: blur(10px);
+  }
+}
