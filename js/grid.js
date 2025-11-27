@@ -10,7 +10,7 @@ class Grid {
   // Build a grid of the specified size
   build() {
     for (var x = 0; x < this.size; x++) {
-      var row = this.cells[x] = [];
+      var row = (this.cells[x] = []);
 
       for (var y = 0; y < this.size; y++) {
         row.push(null);
@@ -64,8 +64,7 @@ class Grid {
   }
   // TODO: Kevin
   setHighestTile(tile) {
-    if (tile.value > highestTileIndex)
-      highestTileIndex = tile.value;
+    if (tile.value > highestTileIndex) highestTileIndex = tile.value;
   }
   // Inserts a tile at its position
   insertTile(tile) {
@@ -76,21 +75,8 @@ class Grid {
     this.cells[tile.x][tile.y] = null;
   }
   withinBounds(position) {
-    return position.x >= 0 && position.x < this.size &&
-      position.y >= 0 && position.y < this.size;
+    return position.x >= 0 && position.x < this.size && position.y >= 0 && position.y < this.size;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 var highestTileIndex = 0;

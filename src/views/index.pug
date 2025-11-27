@@ -1,0 +1,70 @@
+doctype html
+html.progrecss.mock.fixed.staggered.white(data-progrecss='0')
+  head
+    meta(charset='utf-8')
+    title 2048 Cat GIFs powered by Tumblr API
+    link(
+      href='node_modules/modern-normalize/modern-normalize.css',
+      rel='stylesheet',
+      type='text/css'
+    )
+    link(href='style/main.css', rel='stylesheet', type='text/css')
+    link(rel='shortcut icon', href='favicon.ico')
+    link(rel='apple-touch-icon', href='meta/apple-touch-icon.png')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='HandheldFriendly', content='True')
+    meta(name='MobileOptimized', content='320')
+    meta(
+      name='viewport',
+      content='width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui'
+    )
+    link(href='style/progrecss.css', rel='stylesheet', type='text/css')
+
+  body
+    .container
+      .game-container
+        .game-message
+          p
+          .lower
+            a.keep-playing-button Keep going
+            a.retry-button Try again
+
+        .grid-container
+          - for (let row = 0; row < 4; row++)
+            .grid-row
+              - for (let col = 0; col < 4; col++)
+                .grid-cell
+
+        .tile-container
+
+    //- Scripts
+    script(
+      src='https://code.jquery.com/jquery-3.7.1.min.js',
+      integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=',
+      crossorigin='anonymous'
+    )
+    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js')
+    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js')
+    script(src='https://www.gstatic.com/firebasejs/8.6.8/firebase-performance.js')
+    script(src='js/keyboard_input_manager.js')
+    script(src='js/html_actuator.js')
+    script(src='js/grid.js')
+    script(src='js/tile.js')
+    script(src='js/local_score_manager.js')
+    script(src='js/game_manager.js')
+    script(src='js/application.js')
+
+    //- Firebase configuration
+    script.
+      var firebaseConfig = {
+        apiKey: 'AIzaSyDTnqseSgb4PRAAqu33scobYL-6bI6F61E',
+        authDomain: 'tumblr2048-a96a4.firebaseapp.com',
+        projectId: 'tumblr2048-a96a4',
+        storageBucket: 'tumblr2048-a96a4.appspot.com',
+        messagingSenderId: '110453299973',
+        appId: '1:110453299973:web:7365e49199380b425cf56c',
+        measurementId: 'G-1B06YPGQ62',
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.performance();
+      firebase.analytics();

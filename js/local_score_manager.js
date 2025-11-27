@@ -3,7 +3,7 @@ window.fakeStorage = {
   _data: {},
 
   setItem: function (id, val) {
-    return this._data[id] = String(val);
+    return (this._data[id] = String(val));
   },
 
   getItem: function (id) {
@@ -15,23 +15,23 @@ window.fakeStorage = {
   },
 
   clear: function () {
-    return this._data = {};
-  }
+    return (this._data = {});
+  },
 };
 
 class LocalScoreManager {
   constructor() {
-    this.key = "bestScore";
+    this.key = 'bestScore';
 
     var supported = this.localStorageSupported();
     this.storage = supported ? window.localStorage : window.fakeStorage;
   }
   localStorageSupported() {
-    var testKey = "test";
+    var testKey = 'test';
     var storage = window.localStorage;
 
     try {
-      storage.setItem(testKey, "1");
+      storage.setItem(testKey, '1');
       storage.removeItem(testKey);
       return true;
     } catch (error) {
@@ -45,7 +45,3 @@ class LocalScoreManager {
     this.storage.setItem(this.key, score);
   }
 }
-
-
-
-

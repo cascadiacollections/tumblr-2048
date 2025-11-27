@@ -5,13 +5,13 @@ class KeyboardInputManager {
 
     if (window.navigator.msPointerEnabled) {
       //Internet Explorer 10 style
-      this.eventTouchstart = "MSPointerDown";
-      this.eventTouchmove = "MSPointerMove";
-      this.eventTouchend = "MSPointerUp";
+      this.eventTouchstart = 'MSPointerDown';
+      this.eventTouchmove = 'MSPointerMove';
+      this.eventTouchend = 'MSPointerUp';
     } else {
-      this.eventTouchstart = "touchstart";
-      this.eventTouchmove = "touchmove";
-      this.eventTouchend = "touchend";
+      this.eventTouchstart = 'touchstart';
+      this.eventTouchmove = 'touchmove';
+      this.eventTouchend = 'touchend';
     }
 
     this.listen();
@@ -45,39 +45,40 @@ class KeyboardInputManager {
       87: 0,
       68: 1,
       83: 2,
-      65: 3 // A
+      65: 3, // A
     };
 
-    document.addEventListener("keydown", function (event) {
-      var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
-        event.shiftKey;
+    document.addEventListener('keydown', function (event) {
+      var modifiers = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
       var mapped = map[event.which];
 
       if (!modifiers) {
         if (mapped !== undefined) {
           event.preventDefault();
-          self.emit("move", mapped);
+          self.emit('move', mapped);
         }
 
-        if (event.which === 32)
-          self.restart.bind(self)(event);
+        if (event.which === 32) self.restart.bind(self)(event);
       }
     });
 
-    var retry = document.querySelector(".retry-button");
-    retry.addEventListener("click", this.restart.bind(this));
+    var retry = document.querySelector('.retry-button');
+    retry.addEventListener('click', this.restart.bind(this));
     retry.addEventListener(this.eventTouchend, this.restart.bind(this));
 
-    var keepPlaying = document.querySelector(".keep-playing-button");
-    keepPlaying.addEventListener("click", this.keepPlaying.bind(this));
-    keepPlaying.addEventListener("touchend", this.keepPlaying.bind(this));
+    var keepPlaying = document.querySelector('.keep-playing-button');
+    keepPlaying.addEventListener('click', this.keepPlaying.bind(this));
+    keepPlaying.addEventListener('touchend', this.keepPlaying.bind(this));
 
     // Listen to swipe events
     var touchStartClientX, touchStartClientY;
-    var gameContainer = document.getElementsByClassName("game-container")[0];
+    var gameContainer = document.getElementsByClassName('game-container')[0];
 
     gameContainer.addEventListener(this.eventTouchstart, function (event) {
-      if ((!window.navigator.msPointerEnabled && event.touches.length > 1) || event.targetTouches > 1)
+      if (
+        (!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+        event.targetTouches > 1
+      )
         return;
 
       if (window.navigator.msPointerEnabled) {
@@ -96,7 +97,10 @@ class KeyboardInputManager {
     });
 
     gameContainer.addEventListener(this.eventTouchend, function (event) {
-      if ((!window.navigator.msPointerEnabled && event.touches.length > 0) || event.targetTouches > 0)
+      if (
+        (!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+        event.targetTouches > 0
+      )
         return;
 
       var touchEndClientX, touchEndClientY;
@@ -116,22 +120,16 @@ class KeyboardInputManager {
 
       if (Math.max(absDx, absDy) > 10) {
         // (right : left) : (down : up)
-        self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+        self.emit('move', absDx > absDy ? (dx > 0 ? 1 : 3) : dy > 0 ? 2 : 0);
       }
     });
   }
   restart(event) {
     event.preventDefault();
-    this.emit("restart");
+    this.emit('restart');
   }
   keepPlaying(event) {
     event.preventDefault();
-    this.emit("keepPlaying");
+    this.emit('keepPlaying');
   }
 }
-
-
-
-
-
-

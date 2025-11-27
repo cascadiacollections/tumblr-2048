@@ -180,4 +180,4 @@ Contributors will be recognized in our [README](README.md) and release notes. Th
 
 ---
 
-*By contributing to this project, you agree that your contributions will be licensed under the same [MIT License](LICENSE.txt) that covers the project.*
+_By contributing to this project, you agree that your contributions will be licensed under the same [MIT License](LICENSE.txt) that covers the project._

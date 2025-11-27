@@ -2,26 +2,58 @@
   "name": "tumblr-2048",
   "version": "1.0.0",
   "description": "2048 game using the tumblr API",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -o"
+    "start": "npm run dev",
+    "dev": "npm run build:pug:watch & http-server -c-1 -o -p 8080",
+    "serve": "http-server -c-1 -p 8080",
+    "build": "npm run build:pug",
+    "build:pug": "pug src/views -o . --pretty",
+    "build:pug:watch": "pug src/views -o . --pretty --watch",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write \"**/*.{js,json,html,css,md,pug}\"",
+    "format:check": "prettier --check \"**/*.{js,json,html,css,md,pug}\"",
+    "validate": "npm run format:check && npm run lint",
+    "prepare": "node -e \"try { require('husky').install() } catch (e) {}\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KevinTCoughlin/tumblr-2048.git"
+    "url": "git+https://github.com/cascadiacollections/tumblr-2048.git"
   },
   "keywords": [
     "Tumblr",
-    "2048"
+    "2048",
+    "game",
+    "cat-gifs"
   ],
   "author": "Kevin T. Coughlin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KevinTCoughlin/tumblr-2048/issues"
+    "url": "https://github.com/cascadiacollections/tumblr-2048/issues"
   },
-  "homepage": "https://github.com/KevinTCoughlin/tumblr-2048#readme",
+  "homepage": "https://github.com/cascadiacollections/tumblr-2048#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "packageManager": "yarn@1.22.22",
   "devDependencies": {
-    "@types/jquery": "3.5.14",
-    "http-server": "14.1.1"
+    "@eslint/js": "^9.15.0",
+    "@prettier/plugin-pug": "^3.4.2",
+    "@types/jquery": "^3.5.31",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.3.3",
+    "pug": "^3.0.3",
+    "pug-cli": "^1.0.0-alpha6"
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
   }
 }

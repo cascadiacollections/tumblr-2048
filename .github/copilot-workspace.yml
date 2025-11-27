@@ -1,0 +1,99 @@
+# GitHub Copilot Workspace Configuration
+# This file helps Copilot understand the project structure and context
+
+# Project metadata
+project:
+  name: tumblr-2048
+  description: A 2048 game clone with cat GIFs from Tumblr API
+  type: web-application
+  languages:
+    - javascript
+    - html
+    - css
+
+# Code style preferences
+code_style:
+  javascript:
+    quote_style: single
+    semicolons: true
+    indentation: 2
+    prefer_const: true
+    arrow_functions: true
+
+  html:
+    indentation: 2
+    self_closing_tags: true
+
+  css:
+    indentation: 2
+    naming_convention: kebab-case
+
+# Key directories and their purpose
+directories:
+  js:
+    description: JavaScript source files for game logic
+    files:
+      - application.js: Application entry point
+      - game_manager.js: Core game logic and state
+      - grid.js: Grid data structure
+      - html_actuator.js: DOM rendering and Tumblr API
+      - keyboard_input_manager.js: Input handling
+      - local_score_manager.js: Score persistence
+      - tile.js: Tile model
+
+  style:
+    description: CSS stylesheets
+    files:
+      - main.css: Primary styles
+      - progrecss.css: Progress bar styles
+
+  meta:
+    description: App icons and metadata
+
+  .github:
+    description: GitHub configuration and workflows
+
+  .vscode:
+    description: VS Code workspace settings
+
+# Important patterns and conventions
+patterns:
+  - Constructor functions use PascalCase (GameManager, Grid, etc.)
+  - DOM manipulation primarily through HTMLActuator
+  - Event handling through KeyboardInputManager
+  - State management in GameManager
+  - Local storage through LocalScoreManager
+
+# External dependencies
+dependencies:
+  jquery: '3.7.1'
+  firebase: '8.6.8'
+  http-server: '^14.1.1'
+  eslint: '^9.15.0'
+  prettier: '^3.3.3'
+
+# Testing approach
+testing:
+  manual: true
+  browser_testing: true
+  mobile_testing: true
+
+# Documentation
+documentation:
+  - README.md: Project overview
+  - SETUP.md: Development setup guide
+  - CONTRIBUTING.md: Contribution guidelines
+  - .github/copilot-instructions.md: Copilot-specific guidance
+
+# Build and deployment
+build:
+  type: static
+  output: ./
+  dev_server: http-server
+  port: 8080
+
+# Quality gates
+quality:
+  linting: eslint
+  formatting: prettier
+  validation_script: npm run validate

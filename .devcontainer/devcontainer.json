@@ -1,41 +1,63 @@
 {
   "name": "Tumblr 2048 Development",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
-  
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    }
   },
-
   "customizations": {
     "vscode": {
       "extensions": [
+        "github.copilot",
+        "github.copilot-chat",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
         "ms-vscode.vscode-html-languageservice",
         "ms-vscode.vscode-css-languageservice",
         "ms-vscode.vscode-json-languageservice",
         "ms-vscode.js-debug",
-        "bradlc.vscode-tailwindcss",
         "ritwickdey.liveserver",
         "formulahendry.auto-rename-tag",
         "ms-vscode.vscode-typescript-next",
-        "ms-playwright.playwright",
-        "esbenp.prettier-vscode",
-        "ms-vscode.theme-predawnkit"
+        "editorconfig.editorconfig"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "github.copilot.enable": {
+          "*": true
+        },
+        "github.copilot.chat.model": "claude-sonnet",
+        "github.copilot.advanced": {
+          "model": "claude-sonnet"
+        }
+      }
+    },
+    "codespaces": {
+      "repositories": {
+        "cascadiacollections/tumblr-2048": {
+          "permissions": {
+            "contents": "write",
+            "pull_requests": "write"
+          }
+        }
       }
     }
   },
-
   "forwardPorts": [8080],
   "portsAttributes": {
     "8080": {
       "label": "Development Server",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
     }
   },
-
-  "postCreateCommand": "npm install",
-
-  "remoteUser": "node"
+  "postCreateCommand": "npm install && npm run validate",
+  "postStartCommand": "echo '🚀 Workspace ready! Run npm start to begin development.'",
+  "remoteUser": "node",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerEnv": {
+    "GITHUB_COPILOT_MODEL": "claude-sonnet"
+  }
 }

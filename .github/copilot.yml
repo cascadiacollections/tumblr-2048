@@ -1,0 +1,180 @@
+name: tumblr-2048
+description: A 2048 game clone with cat GIFs from Tumblr API
+
+# Enable GitHub Copilot Workspace features
+features:
+  copilot: true
+  codeSearch: true
+  semanticSearch: true
+
+# Project configuration
+project:
+  type: web-application
+  language: javascript
+  framework: vanilla-js
+
+# Development tools
+tools:
+  packageManager: npm
+  linter: eslint
+  formatter: prettier
+  devServer: http-server
+
+# Key files for Copilot context
+contextFiles:
+  - README.md
+  - SETUP.md
+  - CONTRIBUTING.md
+  - .github/copilot-instructions.md
+  - package.json
+  - eslint.config.js
+  - .prettierrc.json
+
+# Ignore patterns (in addition to .copilotignore)
+ignore:
+  - node_modules/**
+  - dist/**
+  - build/**
+  - '*.log'
+  - '.git/**'
+
+# Custom prompts and templates
+prompts:
+  codeReview:
+    - 'Check ESLint compliance'
+    - 'Verify Prettier formatting'
+    - 'Assess mobile responsiveness'
+    - 'Evaluate accessibility'
+    - 'Check error handling'
+
+  featureDevelopment:
+    - 'Follow existing patterns in GameManager'
+    - 'Include mobile touch support'
+    - 'Add accessibility attributes'
+    - 'Maintain browser compatibility'
+    - 'Consider performance impact'
+
+  bugFix:
+    - 'Analyze related code paths'
+    - 'Check for similar issues'
+    - 'Verify no regressions'
+    - 'Test on mobile devices'
+
+# Architecture overview for AI context
+architecture:
+  patterns:
+    - 'Constructor functions for classes'
+    - 'Event-driven architecture'
+    - 'DOM manipulation through HTMLActuator'
+    - 'State management in GameManager'
+    - 'LocalStorage for persistence'
+
+  components:
+    GameManager:
+      file: js/game_manager.js
+      purpose: Core game logic and state management
+
+    Grid:
+      file: js/grid.js
+      purpose: Grid data structure and tile management
+
+    HTMLActuator:
+      file: js/html_actuator.js
+      purpose: DOM rendering and Tumblr API integration
+
+    KeyboardInputManager:
+      file: js/keyboard_input_manager.js
+      purpose: Keyboard and touch input handling
+
+    LocalScoreManager:
+      file: js/local_score_manager.js
+      purpose: Score persistence using localStorage
+
+    Tile:
+      file: js/tile.js
+      purpose: Individual tile representation
+
+# Code style preferences
+codeStyle:
+  javascript:
+    quoteStyle: single
+    semicolons: true
+    indentation: 2
+    preferConst: true
+    arrowFunctions: true
+
+  html:
+    indentation: 2
+    semanticElements: true
+
+  css:
+    indentation: 2
+    namingConvention: kebab-case
+
+# Quality standards
+quality:
+  linting:
+    tool: eslint
+    config: eslint.config.js
+    autoFix: true
+
+  formatting:
+    tool: prettier
+    config: .prettierrc.json
+    formatOnSave: true
+
+  testing:
+    manual: true
+    browserTesting: true
+    mobileTesting: true
+
+  accessibility:
+    required: true
+    standards: WCAG 2.1 AA
+
+  performance:
+    mobileFirst: true
+    minimizeDOM: true
+    optimizeAnimations: true
+
+# Dependencies overview
+dependencies:
+  runtime:
+    jquery: '3.7.1'
+    firebase: '8.6.8'
+
+  development:
+    http-server: '^14.1.1'
+    eslint: '^9.15.0'
+    prettier: '^3.3.3'
+
+# Browser support
+browsers:
+  - Chrome (latest)
+  - Firefox (latest)
+  - Safari (latest)
+  - Edge (latest)
+  - iOS Safari
+  - Chrome Mobile
+
+# Workspace settings
+workspace:
+  autoSave: onFocusChange
+  formatOnSave: true
+  lintOnSave: true
+
+# AI behavior preferences
+ai:
+  preferredModel: claude-sonnet
+  codeGeneration:
+    followESLint: true
+    followPrettier: true
+    maintainPatterns: true
+    considerMobile: true
+    includeAccessibility: true
+
+  codeReview:
+    checkCompliance: true
+    suggestImprovements: true
+    identifyIssues: true
+    proposeAlternatives: true

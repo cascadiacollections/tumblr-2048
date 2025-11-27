@@ -5,6 +5,7 @@ This document provides a comprehensive guide for developing the Tumblr 2048 game
 ## Quick Start
 
 ### Option 1: One-Click Setup
+
 1. Navigate to the repository on GitHub
 2. Click the green "Code" button
 3. Select "Codespaces" tab
@@ -13,20 +14,56 @@ This document provides a comprehensive guide for developing the Tumblr 2048 game
 6. The development server will start automatically and open in your browser
 
 ### Option 2: Using the GitHub CLI
+
 ```bash
 gh codespace create --repo cascadiacollections/tumblr-2048
 ```
 
+## 🤖 GitHub Copilot Integration
+
+This Codespace is pre-configured with **GitHub Copilot using Claude Sonnet (Anthropic)** as the default AI model.
+
+### Features Available
+
+- ✅ **Code Completions** - Inline suggestions as you type
+- ✅ **Chat Assistant** - Conversational AI help (Ctrl+I or Cmd+I)
+- ✅ **Claude Sonnet Model** - Advanced reasoning and code generation
+- ✅ **Project Context** - Copilot understands the entire codebase
+- ✅ **Custom Instructions** - Pre-configured with project guidelines
+
+### Using Copilot
+
+**Inline Suggestions:**
+Start typing and press `Tab` to accept suggestions, `Alt+]` for next suggestion.
+
+**Chat:**
+Press `Ctrl+I` (or `Cmd+I` on Mac) to open inline chat, or use the Chat sidebar.
+
+**Example Prompts:**
+
+```
+@workspace Explain how the game grid system works
+Add a pause button with mobile touch support
+/review Check this code for accessibility issues
+```
+
+See `.github/COPILOT_QUICKSTART.md` for detailed usage guide.
+
 ## Development Workflow
 
 ### Automatic Setup
+
 When your Codespace starts, the following happens automatically:
-- Node.js 22 environment is configured
-- All dependencies are installed via `npm install`
-- Development server starts on port 8080
-- Browser automatically opens to the running game
+
+- Node.js 24 environment is configured
+- GitHub Copilot extensions installed and activated
+- Claude Sonnet model configured as default
+- All dependencies installed via `npm install`
+- Code quality validation runs (`npm run validate`)
+- Development server ready on port 8080
 
 ### Manual Commands
+
 If you need to restart services manually:
 
 ```bash
@@ -42,19 +79,23 @@ npm start
 ### VS Code Integration
 
 #### Available Tasks
+
 Access these through the Command Palette (Ctrl+Shift+P):
+
 - **Install Dependencies**: Runs `npm install`
 - **Start Development Server**: Runs `npm start` (default build task - Ctrl+Shift+B)
 - **Open in Browser**: Opens the game in a new browser tab
 - **Stop Development Server**: Terminates the running server
 
 #### Debugging
+
 1. Open the Debug panel (Ctrl+Shift+D)
 2. Select "Launch Chrome" configuration
 3. Press F5 to start debugging
 4. Set breakpoints in your JavaScript files
 
 #### Live Development
+
 - The Live Server extension is pre-configured to work on port 8080
 - Changes to HTML, CSS, and JavaScript files will automatically refresh the browser
 - Use Ctrl+S to save and trigger automatic refresh
@@ -89,12 +130,14 @@ tumblr-2048/
 ## Key Features
 
 ### Game Mechanics
+
 - **2048 Game Logic**: Classic sliding tile puzzle
 - **Tumblr Integration**: Uses Tumblr API to fetch cat GIFs for tiles
 - **Local Storage**: Saves high scores locally
 - **Responsive Design**: Works on desktop and mobile devices
 
 ### Development Features
+
 - **Hot Reload**: Automatic browser refresh on file changes
 - **Debug Support**: Chrome DevTools integration
 - **TypeScript Support**: IntelliSense for JavaScript files
@@ -105,25 +148,33 @@ tumblr-2048/
 ### Common Issues
 
 #### Port 8080 Already in Use
+
 If you see an error about port 8080 being in use:
+
 1. Check if another process is using the port: `lsof -i :8080`
 2. Kill the process: `kill -9 <PID>`
 3. Restart the development server: `npm start`
 
 #### Tumblr API Issues
+
 If images aren't loading:
+
 - Check browser console for CORS errors
 - Verify internet connectivity in the Codespace
 - The game uses a public Tumblr API endpoint that may have rate limits
 
 #### Dependencies Not Installing
+
 If `npm install` fails:
+
 1. Clear npm cache: `npm cache clean --force`
 2. Delete node_modules: `rm -rf node_modules`
 3. Reinstall: `npm install`
 
 #### Browser Not Opening Automatically
+
 If the browser doesn't open automatically:
+
 1. Check the Ports tab in VS Code
 2. Click the globe icon next to port 8080
 3. Or manually navigate to the forwarded URL
@@ -131,10 +182,12 @@ If the browser doesn't open automatically:
 ### Performance Tips
 
 #### For Faster Startup
+
 - Use the "Prebuilt" Codespace option if available
 - Keep your Codespace running between sessions (pause instead of delete)
 
 #### For Better Development Experience
+
 - Use the integrated terminal (Ctrl+`) for command-line operations
 - Install the "Thunder Client" extension for API testing
 - Use the Git integration in VS Code for version control
@@ -142,13 +195,17 @@ If the browser doesn't open automatically:
 ## Advanced Configuration
 
 ### Custom Extensions
+
 To add more VS Code extensions:
+
 1. Edit `.devcontainer/devcontainer.json`
 2. Add extension IDs to the `extensions` array
 3. Rebuild the container
 
 ### Environment Variables
+
 Add environment variables to `.devcontainer/devcontainer.json`:
+
 ```json
 {
   "containerEnv": {
@@ -159,13 +216,16 @@ Add environment variables to `.devcontainer/devcontainer.json`:
 ```
 
 ### Additional Services
+
 To add databases or other services:
+
 1. Use the `features` section in `devcontainer.json`
 2. Or modify the `docker-compose.yml` if needed
 
 ## Contributing
 
 When making changes:
+
 1. Create a new branch: `git checkout -b feature/your-feature`
 2. Make your changes and test them
 3. Commit your changes: `git commit -am "Add new feature"`

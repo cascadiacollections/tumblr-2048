@@ -1,0 +1,153 @@
+name: Code Quality & Copilot Validation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate:
+    name: Validate Code Quality
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting with Prettier
+        run: npm run format:check
+
+      - name: Lint with ESLint
+        run: npm run lint
+
+      - name: Run validation
+        run: npm run validate
+
+      - name: Check for TODO/FIXME comments
+        run: |
+          echo "Checking for unresolved TODO/FIXME comments..."
+          ! grep -r "TODO\|FIXME" js/ || echo "Found TODO/FIXME comments - consider addressing them"
+
+      - name: Validate Copilot configuration
+        run: |
+          echo "Validating Copilot configuration files..."
+          test -f .github/copilot-instructions.md || exit 1
+          test -f .copilotignore || exit 1
+          echo "✅ Copilot configuration files present"
+
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Check for known vulnerabilities
+        run: |
+          echo "Checking for vulnerable packages..."
+          npm audit --json > audit.json || true
+          cat audit.json
+
+  copilot-quality:
+    name: Copilot Code Quality Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check changed files
+        run: |
+          echo "Files changed in this PR:"
+          git diff --name-only origin/${{ github.base_ref }}...HEAD
+
+      - name: Validate JavaScript changes
+        run: |
+          CHANGED_JS=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.js$' || true)
+          if [ -n "$CHANGED_JS" ]; then
+            echo "Linting changed JavaScript files:"
+            echo "$CHANGED_JS" | xargs npm run lint -- || true
+          else
+            echo "No JavaScript files changed"
+          fi
+
+      - name: Check code complexity
+        run: |
+          echo "⚠️ Consider reviewing code complexity for maintainability"
+          echo "Copilot suggestions should maintain or improve code readability"
+
+      - name: Verify mobile compatibility notes
+        run: |
+          if git diff origin/${{ github.base_ref }}...HEAD | grep -i "mobile\|touch\|responsive"; then
+            echo "✅ Mobile-related changes detected - ensure testing on mobile devices"
+          fi
+
+      - name: Verify accessibility notes
+        run: |
+          if git diff origin/${{ github.base_ref }}...HEAD | grep -i "aria\|accessibility\|a11y\|screen.reader"; then
+            echo "✅ Accessibility changes detected - ensure ARIA labels are correct"
+          fi
+
+  compatibility:
+    name: Browser Compatibility Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Check ES6+ features compatibility
+        run: |
+          echo "Checking for modern JavaScript features..."
+          echo "Ensure compatibility with target browsers (Chrome, Firefox, Safari, Edge)"
+          grep -r "async\|await\|=>" js/ | wc -l || true
+          echo "Modern features found - verify browser support if needed"
+
+      - name: Verify no unsupported APIs
+        run: |
+          echo "Checking for potentially unsupported APIs..."
+          ! grep -r "IntersectionObserver\|ResizeObserver" js/ || echo "⚠️ Check API support"

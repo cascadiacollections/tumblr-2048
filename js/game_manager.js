@@ -2,15 +2,15 @@
 class GameManager {
   constructor(size, InputManager, Actuator, ScoreManager) {
     this.size = size; // Size of the grid
-    this.inputManager = new InputManager;
-    this.scoreManager = new ScoreManager;
-    this.actuator = new Actuator;
+    this.inputManager = new InputManager();
+    this.scoreManager = new ScoreManager();
+    this.actuator = new Actuator();
 
     this.startTiles = 2;
 
-    this.inputManager.on("move", this.move.bind(this));
-    this.inputManager.on("restart", this.restart.bind(this));
-    this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
+    this.inputManager.on('move', this.move.bind(this));
+    this.inputManager.on('restart', this.restart.bind(this));
+    this.inputManager.on('keepPlaying', this.keepPlaying.bind(this));
 
     this.setup();
   }
@@ -73,9 +73,8 @@ class GameManager {
       over: this.over,
       won: this.won,
       bestScore: this.scoreManager.get(),
-      terminated: this.isGameTerminated()
+      terminated: this.isGameTerminated(),
     });
-
   }
   // Save all tile positions and remove merger info
   prepareTiles() {
@@ -97,8 +96,7 @@ class GameManager {
     // 0: up, 1: right, 2:down, 3: left
     var self = this;
 
-    if (this.isGameTerminated())
-      return; // Don't do anything if the game's over
+    if (this.isGameTerminated()) return; // Don't do anything if the game's over
 
     var cell, tile;
 
@@ -134,8 +132,7 @@ class GameManager {
             self.score += merged.value;
 
             // The mighty 2048 tile
-            if (merged.value === 2048)
-              self.won = true;
+            if (merged.value === 2048) self.won = true;
           } else {
             self.moveTile(tile, positions.farthest);
           }
@@ -164,7 +161,7 @@ class GameManager {
       0: { x: 0, y: -1 },
       1: { x: 1, y: 0 },
       2: { x: 0, y: 1 },
-      3: { x: -1, y: 0 } // left
+      3: { x: -1, y: 0 }, // left
     };
 
     return map[direction];
@@ -179,10 +176,8 @@ class GameManager {
     }
 
     // Always traverse from the farthest cell in the chosen direction
-    if (vector.x === 1)
-      traversals.x = traversals.x.reverse();
-    if (vector.y === 1)
-      traversals.y = traversals.y.reverse();
+    if (vector.x === 1) traversals.x = traversals.x.reverse();
+    if (vector.y === 1) traversals.y = traversals.y.reverse();
 
     return traversals;
   }
@@ -193,12 +188,11 @@ class GameManager {
     do {
       previous = cell;
       cell = { x: previous.x + vector.x, y: previous.y + vector.y };
-    } while (this.grid.withinBounds(cell) &&
-      this.grid.cellAvailable(cell));
+    } while (this.grid.withinBounds(cell) && this.grid.cellAvailable(cell));
 
     return {
       farthest: previous,
-      next: cell // Used to check if a merge is required
+      next: cell, // Used to check if a merge is required
     };
   }
   movesAvailable() {
@@ -235,20 +229,3 @@ class GameManager {
     return first.x === second.x && first.y === second.y;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

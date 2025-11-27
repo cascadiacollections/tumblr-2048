@@ -16,6 +16,3 @@ class Tile {
     this.y = position.y;
   }
 }
-
-
-

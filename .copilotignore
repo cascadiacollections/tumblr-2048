@@ -1,0 +1,81 @@
+# .copilotignore
+# Specifies intentionally untracked files that Copilot should ignore
+# when analyzing the codebase for context
+
+# Dependencies
+node_modules/
+bower_components/
+jspm_packages/
+
+# Build outputs
+dist/
+build/
+out/
+*.min.js
+*.min.css
+
+# Note: We want Copilot to see .pug source files
+# but can ignore compiled HTML if needed
+
+# Package manager files
+package-lock.json
+yarn.lock
+.yarn/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Git
+.git/
+.gitignore
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Large binary files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.eot

@@ -10,33 +10,83 @@
     "**/*.sass",
     "**/*.ts"
   ],
-  
   "files.associations": {
     "*.html": "html",
     "*.css": "css",
     "*.js": "javascript",
-    "*.json": "json"
+    "*.json": "json",
+    "*.pug": "pug"
   },
-  
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "pug": "html"
   },
-  
+  "[pug]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.indentation": true,
+    "editor.semanticHighlighting.enabled": true
+  },
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
-  
   "javascript.preferences.includePackageJsonAutoImports": "auto",
+  "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.includePackageJsonAutoImports": "auto",
-  
+  "typescript.preferences.quoteStyle": "single",
   "html.format.indentInnerHtml": true,
   "html.format.wrapLineLength": 120,
-  
   "css.lint.unknownAtRules": "ignore",
-  
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "eslint.validate": [
+    "javascript"
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "javascript": true,
+    "html": true,
+    "css": true,
+    "json": true,
+    "pug": true
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.chat.useProjectTemplates": true,
+  "github.copilot.chat.localeOverride": "auto",
+  "github.copilot.chat.model": "claude-sonnet",
+  "github.copilot.advanced": {
+    "model": "claude-sonnet"
+  },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "package.json": "package-lock.json,yarn.lock"
+    "package.json": "package-lock.json,yarn.lock,.yarnrc,.npmrc"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.yarn": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true
   }
 }

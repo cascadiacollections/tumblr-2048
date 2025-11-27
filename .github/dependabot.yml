@@ -1,16 +1,48 @@
 version: 2
 updates:
-  # Maintain dependencies for npm
-  - package-ecosystem: "npm"
-    directory: "/"
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-    # Allow up to 10 open pull requests for npm dependencies
-    open-pull-requests-limit: 10
-    # Add reviewers and assignees for npm dependencies
-    reviewers:
-      - "KevinTCoughlin"
-    # Add labels to npm pull requests
+      interval: 'weekly'
+    open-pull-requests-limit: 5
     labels:
-      - "dependencies"
-      - "npm"
+      - 'dependencies'
+      - 'github-actions'
+    commit-message:
+      prefix: 'ci'
+      include: 'scope'
+
+  # Maintain runtime dependencies for npm
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 10
+    labels:
+      - 'dependencies'
+      - 'npm'
+    commit-message:
+      prefix: 'deps'
+      include: 'scope'
+    # Group dependency updates
+    groups:
+      runtime:
+        patterns:
+          - '*'
+        exclude-patterns:
+          - '@types/*'
+          - '@eslint/*'
+          - 'eslint*'
+          - 'prettier'
+      dev-dependencies:
+        dependency-type: 'development'
+        patterns:
+          - '@types/*'
+          - '@eslint/*'
+          - 'eslint*'
+          - 'prettier'
+    # Ignore major version updates by default
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
